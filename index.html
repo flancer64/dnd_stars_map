@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stars Net</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        #starsnet {
+            width: 90vw;
+            height: 90vh;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<div id="starsnet"></div>
+
+<script type="text/javascript">
+    //
+    // docs: https://visjs.github.io/vis-network/docs/network/
+    //
+    // create an array with nodes
+    const nodes = new vis.DataSet([
+        {id: 100, label: 'Solar'},
+        {id: 201, label: 'Andromeda 1'},
+        {id: 202, label: 'Andromeda 2'},
+        {id: 204, label: 'Andromeda 4'},
+        {id: 206, label: 'Andromeda 6'},
+        {id: 207, label: 'Andromeda 7'},
+        {id: 300, label: 'AlphaCentaur'},
+        {id: 400, label: 'Altair'},
+        {id: 501, label: 'Virgo 1'},
+        {id: 600, label: 'Tabit'},
+        {id: 700, label: 'IC10'},
+        {id: 801, label: 'Pisces 1'},
+        {id: 900, label: 'GJ70'},
+        {id: 1000, label: 'Sirius'},
+        {id: 1101, label: 'Seuge 1'},
+        {id: 1102, label: 'Seuge 2'},
+        {id: 1200, label: 'BB Capriorni'},
+        {id: 1304, label: 'Patomar 4'},
+        {id: 1312, label: 'Patomar 12'},
+        {id: 1400, label: 'Algol'},
+        {id: 1501, label: 'Leo 1'},
+        {id: 1502, label: 'Leo 2'},
+        {id: 1504, label: 'Leo 4'},
+        {id: 1505, label: 'Leo 5'},
+        {id: 1602, label: 'Antila 2'},
+        {id: 1700, label: 'GJ319'},
+    ]);
+
+    // create an array with edges
+    const edges = new vis.DataSet([
+        {from: 100, to: 201},
+        {from: 100, to: 300},
+        {from: 100, to: 1000},
+        {from: 201, to: 202},
+        {from: 202, to: 204},
+        {from: 202, to: 207},
+        {from: 204, to: 206},
+        {from: 206, to: 207},
+        {from: 300, to: 400},
+        {from: 400, to: 501},
+        {from: 501, to: 600},
+        {from: 1000, to: 1101},
+        {from: 1101, to: 1102},
+        {from: 1101, to: 1200},
+        {from: 1200, to: 1304},
+        {from: 1304, to: 1312},
+        {from: 1304, to: 1400},
+        {from: 1312, to: 1502},
+        {from: 1502, to: 1504},
+        {from: 1502, to: 1505},
+        {from: 1504, to: 1505},
+        {from: 1504, to: 1501},
+    ]);
+
+    // create a network
+    const container = document.getElementById('starsnet');
+
+    // provide the data in the vis format
+    const data = {
+        nodes: nodes,
+        edges: edges
+    };
+    const options = {
+        layout: {
+            randomSeed: 130, // various fixed layouts for various values
+            improvedLayout: true,
+            clusterThreshold: 150,
+        }
+    };
+
+    // initialize your network!
+    const network = new vis.Network(container, data, options);
+</script>
+</body>
+</html>
